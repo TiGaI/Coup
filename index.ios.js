@@ -13,7 +13,8 @@ import {
   View
 } from 'react-native';
 
-
+import SocketIOClient from 'socket.io-client';
+class Main extends React.Component
 
 
 
@@ -32,7 +33,7 @@ var Test = React.createClass({
   })
 })
 
-server.listen(process.env.PORT || 3000)
+
 //
 // var socketConfig = { path: '/socket' };
 // var socket = new SocketIO('localhost:3000', socketConfig);
