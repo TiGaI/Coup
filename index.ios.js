@@ -20,9 +20,14 @@ export default class Coup extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
 
+      <View style={styles.container}>
+        <View style={{flex:.5}}>
           <BoardView/>
+        </View>
+        <View style={{flex:.5}}>
+          <CommentsView/>
+        </View>
       </View>
     );
   }
@@ -31,6 +36,7 @@ export default class Coup extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'flex-start',
     backgroundColor: '#644B62',

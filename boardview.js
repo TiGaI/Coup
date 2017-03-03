@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 var {width, height} = require('Dimensions').get('window');
 var SIZE = 4; // four-by-four grid
-var CELL_SIZE = Math.floor(width * .15); // 20% of the screen width
+var CELL_SIZE = Math.floor(width * .14); // 20% of the screen width
 var CELL_PADDING = Math.floor(CELL_SIZE * .05); // 5% of the cell size
 var BORDER_RADIUS = CELL_PADDING * 2;
 var TILE_SIZE = CELL_SIZE - CELL_PADDING * 2;
@@ -101,11 +101,6 @@ var styles = StyleSheet.create({
     borderRadius: BORDER_RADIUS,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'transparent',
-  },
-  letter: {
-    color: '#333',
-    fontSize: LETTER_SIZE,
     backgroundColor: 'transparent',
   },
 });
