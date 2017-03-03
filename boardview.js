@@ -30,7 +30,7 @@ var BoardView = React.createClass({
             left: 1 * CELL_SIZE + CELL_PADDING,
             top: 0 * CELL_SIZE + CELL_PADDING}]}>
             <Image
-              source={require('./images/duke.png')}>
+              source={require('./images/duke1.png')}>
             </Image>
           </View>
 
@@ -38,49 +38,49 @@ var BoardView = React.createClass({
           left: 2 * CELL_SIZE + CELL_PADDING,
           top: 0 * CELL_SIZE + CELL_PADDING}]}>
           <Image
-            source={require('./images/contessa.png')}>
+            source={require('./images/contessa1.png')}>
           </Image>
         </View>
         <View key={4} style={[styles.btile, {
           left: 0 * CELL_SIZE + CELL_PADDING,
           top: 1 * CELL_SIZE + CELL_PADDING}]}>
           <Image
-            source={require('./images/assassin.png')}>
+            source={require('./images/assassin1.png')}>
           </Image>
         </View>
         <View key={7} style={[styles.btile, {
           left: 3 * CELL_SIZE + CELL_PADDING,
           top: 1 * CELL_SIZE + CELL_PADDING}]}>
           <Image
-            source={require('./images/captain.png')}>
+            source={require('./images/captain1.png')}>
           </Image>
         </View>
         <View key={8} style={[styles.btile, {
           left: 0 * CELL_SIZE + CELL_PADDING,
           top: 2 * CELL_SIZE + CELL_PADDING}]}>
           <Image
-            source={require('./images/ambassador.png')}>
+            source={require('./images/ambassador1.png')}>
           </Image>
         </View>
         <View key={11} style={[styles.btile, {
           left: 3 * CELL_SIZE + CELL_PADDING,
           top: 2 * CELL_SIZE + CELL_PADDING}]}>
           <Image
-            source={require('./images/coup.png')}>
+            source={require('./images/coup1.png')}>
           </Image>
         </View>
         <View key={13} style={[styles.btile, {
           left: 1 * CELL_SIZE + CELL_PADDING,
           top: 3 * CELL_SIZE + CELL_PADDING}]}>
           <Image
-            source={require('./images/coup.png')}>
+            source={require('./images/coup1.png')}>
           </Image>
         </View>
         <View key={14} style={[styles.btile, {
           left: 2 * CELL_SIZE + CELL_PADDING,
           top: 3 * CELL_SIZE + CELL_PADDING}]}>
           <Image
-            source={require('./images/coup.png')}>
+            source={require('./images/coup1.png')}>
           </Image>
         </View>
       </View>
@@ -101,7 +101,7 @@ var styles = StyleSheet.create({
     borderRadius: BORDER_RADIUS,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#BEE1D2',
+    backgroundColor: 'transparent',
   },
   letter: {
     color: '#333',

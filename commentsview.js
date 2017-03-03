@@ -15,7 +15,7 @@ var BORDER_RADIUS = CELL_PADDING * 2;
 var TILE_SIZE = CELL_SIZE - CELL_PADDING * 2;
 var LETTER_SIZE = Math.floor(TILE_SIZE * .75);
 
-var CommentsView = React.createClass({
+var BoardView = React.createClass({
   render() {
     return <View style={styles.bcontainer}>
              {this.renderTiles()}
@@ -30,7 +30,7 @@ var CommentsView = React.createClass({
             left: 1 * CELL_SIZE + CELL_PADDING,
             top: 0 * CELL_SIZE + CELL_PADDING}]}>
             <Image
-              source={require('./images/duke.png')}>
+              source={require('./images/duke1.png')}>
             </Image>
           </View>
 
@@ -38,21 +38,49 @@ var CommentsView = React.createClass({
           left: 2 * CELL_SIZE + CELL_PADDING,
           top: 0 * CELL_SIZE + CELL_PADDING}]}>
           <Image
-            source={require('./images/contessa.png')}>
+            source={require('./images/contessa1.png')}>
+          </Image>
+        </View>
+        <View key={4} style={[styles.btile, {
+          left: 0 * CELL_SIZE + CELL_PADDING,
+          top: 1 * CELL_SIZE + CELL_PADDING}]}>
+          <Image
+            source={require('./images/assassin1.png')}>
+          </Image>
+        </View>
+        <View key={7} style={[styles.btile, {
+          left: 3 * CELL_SIZE + CELL_PADDING,
+          top: 1 * CELL_SIZE + CELL_PADDING}]}>
+          <Image
+            source={require('./images/captain1.png')}>
+          </Image>
+        </View>
+        <View key={8} style={[styles.btile, {
+          left: 0 * CELL_SIZE + CELL_PADDING,
+          top: 2 * CELL_SIZE + CELL_PADDING}]}>
+          <Image
+            source={require('./images/ambassador1.png')}>
+          </Image>
+        </View>
+        <View key={11} style={[styles.btile, {
+          left: 3 * CELL_SIZE + CELL_PADDING,
+          top: 2 * CELL_SIZE + CELL_PADDING}]}>
+          <Image
+            source={require('./images/coup1.png')}>
           </Image>
         </View>
         <View key={13} style={[styles.btile, {
           left: 1 * CELL_SIZE + CELL_PADDING,
           top: 3 * CELL_SIZE + CELL_PADDING}]}>
           <Image
-            source={require('./images/coup.png')}>
+            source={require('./images/coup1.png')}>
           </Image>
         </View>
         <View key={14} style={[styles.btile, {
           left: 2 * CELL_SIZE + CELL_PADDING,
           top: 3 * CELL_SIZE + CELL_PADDING}]}>
           <Image
-            source={require('./images/coup.png')}>
+            source={require('./images/coup1.png')}>
           </Image>
         </View>
       </View>
@@ -82,4 +110,4 @@ var styles = StyleSheet.create({
   },
 });
 
-module.exports = CommentsView;
+module.exports = BoardView;
