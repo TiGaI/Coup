@@ -25,7 +25,6 @@ var BoardView = React.createClass({
   renderTiles(){
     return (
       <View>
-
           <View key={1} style={[styles.btile, {
             left: 1 * CELL_SIZE + CELL_PADDING,
             top: 0 * CELL_SIZE + CELL_PADDING}]}>
