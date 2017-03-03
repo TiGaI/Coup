@@ -10,7 +10,11 @@
     "nachos-ui": "^0.1.2",
     "react": "15.4.2",
     "react-native": "0.42.0",
-    "react-native-orientation": "^1.17.0"
+    "react-native-orientation": "^1.17.0",
+    "react-native-prompt": "^1.0.0",
+    "react-native-socketio": "^0.3.0",
+    "react-test-renderer": "15.4.2",
+    "socket.io-client": "^1.7.3"
   },
   "devDependencies": {
     "babel-jest": "19.0.0",
