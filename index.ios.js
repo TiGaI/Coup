@@ -4,7 +4,24 @@
  * @flow
  */
 
+
+window.navigator.userAgent = 'ReactNative';
+
 import React, { Component } from 'react';
+
+import SocketIOClient from 'socket.io-client';
+import Prompt from 'react-native-prompt';
+
+
+// var express = require('express');
+// var http = require('http')
+// var app = express();
+// var server = http.Server(app);
+// var websocket = socketio(server);
+//
+//
+// server.listen(8081, () => console.log('listening on *:3000'));
+
 
 import {
   AppRegistry,
@@ -13,63 +30,21 @@ import {
   View
 } from 'react-native';
 
-import SocketIOClient from 'socket.io-client';
-class Main extends React.Component
 
 
-
-var io = require("socket.io-client/socket.io")
-let socket;
-
-
-users = [];
-connections = [];
-
-
-var Test = React.createClass({
-  io.sockets.on('connection', function(socket){
-    connections.push(socket);
-    console.log('Connected: %s sockets connected')
-  })
-})
-
-
-//
-// var socketConfig = { path: '/socket' };
-// var socket = new SocketIO('localhost:3000', socketConfig);
-
-// Connect!
-socket.connect();
-
-// An event to be fired on connection to socket
-socket.on('connect', () => {
-    console.log('Wahey -> connected!');
-});
-
-// Event called when 'someEvent' it emitted by server
-socket.on('someEvent', (data) => {
-    console.log('Some event was called, check out this data: ', data);
-});
-
-// Called when anything is emitted by the server
-socket.onAny((event) => {
-    console.log(`${event.name} was called with data: `, event.items);
-});
-
-// Manually join namespace. Ex: namespace is now partyRoom
-socket.joinNamespace('partyRoom')
-
-// Leave namespace, back to '/'
-socket.leaveNamespace()
-
-// Emit an event to server
-socket.emit('helloWorld', {some: 'data'});
-
-//Disconnect from server
-socket.disconnect();
-
-// Reconnect to a closed socket
-socket.reconnect();
+// TEMPLATE componentDidMount: function() {
+//   // this.state.socket.on('connect', function() {
+//   //   console.log('connected');
+//   //   this.setState({
+//   //     username: this.state.socket.username
+//   //   });
+//   //   this.state.socket.emit('username', this.state.socket.username)
+//   // }.bind(this));
+//   //
+//   // this.state.socket.on('errorMessage', function(message) {
+//   //   alert(message);
+//   // }.bind(this));
+// },
 
 
 
@@ -77,11 +52,55 @@ socket.reconnect();
 var App = React.createClass ({
   getInitialState: function(){
     return {
+      socket:
       createCode: '',
       joinCode: '',
       player: 0,
       navigator: props.navigator
     }
+  },
+  signIn(username, event) {
+    this.setState({
+      promptVisible: false
+    })
+    this.state.socket.on('connect', function() {
+      console.log("You are connected")
+      this.setState({
+        username: username
+      });
+      this.state.socket.emit('username', this.state.socket.username)
+
+      this.props.navigator.push({
+          component: Game,
+          title: "Game Board"
+        })
+
+    }.bind(this));
+
+    this.state.socket.on('errorMessage', function(message) {
+      alert(message);
+    }.bind(this));
+  },
+  render: function() {
+    return (
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <View style={{ height: 600, justifyContent: 'flex-end'}}>
+          <Text style={{ fontSize: 20 }} onPress={() => this.setState({ promptVisible: true })}>
+            Join the Room
+          </Text>
+        </View>
+        <Prompt
+            title="What is your game name"
+            placeholder="Start typing"
+            defaultValue=""
+            visible={ this.state.promptVisible }
+            onCancel={ () => this.setState({
+              promptVisible: false
+            })}
+            onSubmit={ (value) => this.signIn(value)}
+          />
+      </View>
+      );
   }
 })
 
@@ -90,9 +109,7 @@ var App = React.createClass ({
 export default class Coup extends Component {
   constructor(props){
     super(props);
-    this.state = {
-
-    }
+    this.socket = SocketIOClient('http://localhost:8081');
   }
 
 
