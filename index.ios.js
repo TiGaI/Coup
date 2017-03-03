@@ -14,6 +14,7 @@ import {
 
 var Orientation = require('react-native-orientation')
 var BoardView = require('./boardview.js');
+var CommentsView = require('./commentsview.js');
 
 export default class Coup extends Component {
 
@@ -22,23 +23,12 @@ export default class Coup extends Component {
       <View style={styles.container}>
 
           <BoardView/>
-
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
   container: {
     flex: 1,
     justifyContent: 'center',
