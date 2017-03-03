@@ -206,11 +206,7 @@ var styles = StyleSheet.create({
     alignItems: 'flex-start',
     backgroundColor: '#644B62',
   },
-  bcontainer: {
-    width: CELL_SIZE * SIZE,
-    height: CELL_SIZE * SIZE,
-    backgroundColor: 'transparent',
-  },
+
   btile: {
     position: 'absolute',
     width: TILE_SIZE,
