@@ -29,6 +29,10 @@ var BoardView = React.createClass({
           <View key={1} style={[styles.btile, {
             left: .2 * CELL_SIZE + CELL_PADDING,
             top: 0 * CELL_SIZE + CELL_PADDING}]}>
+            <Text>
+            Lisa - taxed (6 coins)
+            Graham - stole from Junjie (8 coins)
+            </Text>
           </View>
 
       </View>
