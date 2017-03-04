@@ -12,8 +12,8 @@ import {
   AsyncStorage,
   Image
 } from 'react-native';
-import { Button, Lightbox } from '@shoutem/ui';
-// import { Button } from 'nachos-ui';
+// import { Button, Lightbox } from '@shoutem/ui';
+import { Button } from 'nachos-ui';
 
 
 window.navigator.userAgent = "react-native";
@@ -87,17 +87,27 @@ var App = React.createClass({
   //     </Image>
   // </View>
 
+  // <Image
+  //   source={require('./images/landing.jpeg')}
+  //   style={{opacity: 0.75}}>
+  //
+  // </Image>
+
   render: function() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
 
-      <View>
-          <Image
-            source={require('./images/landing.jpeg')}
-            style={{opacity: 0.75}}>
-            <Button><Text>hello</Text></Button>
-          </Image>
-      </View>
+
+
+
+
+
+      <Image
+        source={require('./images/landing.jpeg')}
+        style={{opacity: 0.75}}>
+          <Button style={{marginTop:500, zIndex:500}}>Join the games</Button>
+      </Image>
+
 
         <Prompt
             title="What is your game name"
