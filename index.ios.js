@@ -13,8 +13,8 @@ import {
   Image
 } from 'react-native';
 // import { Button, Lightbox } from '@shoutem/ui';
-import { Button } from 'nachos-ui';
-
+import { Button, Input } from 'nachos-ui';
+const inputStyle = { margin: 15 }
 
 window.navigator.userAgent = "react-native";
 import SocketIOClient from 'socket.io-client';
@@ -64,49 +64,22 @@ var App = React.createClass({
         title: "Game Board"
     })
   },
-  // <Image
-  //   source={require('./images/landing.jpeg')}
-  //   style={{marginTop:12, opacity: 0.5}}>
-  //   <View>
-  //     <Text style={styles.headline}>Headline</Text>
-  //   </View>
-  // </Image>
-
-  // <View>
-  //     <Image
-  //       source={require('./images/landing.jpeg')}
-  //       style={{marginTop:12, opacity: 0.5},styles.landborder}>
-  //     </Image>
-  // </View>
-  // <Button style={{marginTop: 100}}> hello </Button>
-  //
-  // <View style={styles.landborder}>
-  //     <Image
-  //       source={require('./images/landing1.jpeg')}
-  //       style={{opacity: 0.75}}>
-  //     </Image>
-  // </View>
-
-  // <Image
-  //   source={require('./images/landing.jpeg')}
-  //   style={{opacity: 0.75}}>
-  //
-  // </Image>
 
   render: function() {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
-
-
-
-
 
 
       <Image
         source={require('./images/landing.jpeg')}
-        style={{opacity: 0.75}}>
-          <Button style={{marginTop:500, zIndex:500}}>Join the games</Button>
-      </Image>
+        style={{width:null, height:null,opacity: 0.75, flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor:'blue'}}
+        resizeMode = "stretch">
+        <TextInput
+          style={{flex:.1,height: 100, width: 100, backgroundColor:'pink'}}
+          placeholder='Your name'
+          value={this.state.value}
+          onChangeText={value => this.setState({ value })}
+          />
+          <Button style={{marginTop:450, zIndex:500}}>Join the games</Button>
 
 
         <Prompt
@@ -119,7 +92,7 @@ var App = React.createClass({
             })}
             onSubmit={ (value) => this.signIn(value)}
           />
-      </View>
+</Image>
       );
   }
 });
