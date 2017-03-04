@@ -63,10 +63,15 @@ var App = React.createClass({
   },
   render: function() {
     return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-          <Text style={{ fontSize: 20 }} onPress={() => this.setState({ promptVisible: true })}>
-            Join the Room
-          </Text>
+      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+
+        <Image
+          source={require('./images/landing.jpeg')}
+          style={{marginTop:12, opacity: 0.5}}>
+          <View>
+            <Text style={styles.headline}>Headline</Text>
+          </View>
+        </Image>
         <Prompt
             title="What is your game name"
             placeholder="Start typing"
@@ -244,6 +249,12 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'flex-start',
     backgroundColor: '#644B62',
+  },
+  headline: {
+    fontSize: 20,
+    textAlign: 'center',
+    backgroundColor: 'rgb(0,0,0)',
+    color: 'white'
   },
 });
 
