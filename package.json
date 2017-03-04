@@ -7,9 +7,11 @@
     "test": "jest"
   },
   "dependencies": {
+    "@shoutem/ui": "^0.10.13",
     "nachos-ui": "^0.1.2",
     "react": "15.4.2",
     "react-native": "0.42.0",
+    "react-native-material-kit": "^0.4.1",
     "react-native-orientation": "^1.17.0",
     "react-native-prompt": "^1.0.0",
     "react-native-socketio": "^0.3.0",

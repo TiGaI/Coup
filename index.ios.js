@@ -12,6 +12,9 @@ import {
   AsyncStorage,
   Image
 } from 'react-native';
+import { Button, Lightbox } from '@shoutem/ui';
+// import { Button } from 'nachos-ui';
+
 
 window.navigator.userAgent = "react-native";
 import SocketIOClient from 'socket.io-client';
@@ -28,7 +31,7 @@ export default class Coup extends Component {
       <NavigatorIOS
         initialRoute={{
           component: App,
-          title: ""
+          title: "Welcome to COUP"
         }}
         style={{flex: 1}}
       />
@@ -61,17 +64,41 @@ var App = React.createClass({
         title: "Game Board"
     })
   },
+  // <Image
+  //   source={require('./images/landing.jpeg')}
+  //   style={{marginTop:12, opacity: 0.5}}>
+  //   <View>
+  //     <Text style={styles.headline}>Headline</Text>
+  //   </View>
+  // </Image>
+
+  // <View>
+  //     <Image
+  //       source={require('./images/landing.jpeg')}
+  //       style={{marginTop:12, opacity: 0.5},styles.landborder}>
+  //     </Image>
+  // </View>
+  // <Button style={{marginTop: 100}}> hello </Button>
+  //
+  // <View style={styles.landborder}>
+  //     <Image
+  //       source={require('./images/landing1.jpeg')}
+  //       style={{opacity: 0.75}}>
+  //     </Image>
+  // </View>
+
   render: function() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center'}}>
 
-        <Image
-          source={require('./images/landing.jpeg')}
-          style={{marginTop:12, opacity: 0.5}}>
-          <View>
-            <Text style={styles.headline}>Headline</Text>
-          </View>
-        </Image>
+      <View>
+          <Image
+            source={require('./images/landing.jpeg')}
+            style={{opacity: 0.75}}>
+            <Button><Text>hello</Text></Button>
+          </Image>
+      </View>
+
         <Prompt
             title="What is your game name"
             placeholder="Start typing"
@@ -250,11 +277,14 @@ var styles = StyleSheet.create({
     alignItems: 'flex-start',
     backgroundColor: '#644B62',
   },
-  headline: {
-    fontSize: 20,
-    textAlign: 'center',
-    backgroundColor: 'rgb(0,0,0)',
-    color: 'white'
+  landborder: {
+    width: width,
+    marginTop: 65,
+    height: height - 65,
+    backgroundColor: 'transparent',
+    borderStyle: 'solid',
+    borderWidth: 30,
+    borderColor: 'maroon',
   },
 });
 
