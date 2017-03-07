@@ -305,7 +305,7 @@ var BoardView = React.createClass({
     if (this.state.gameStatus === 'not started') {
       return (
         <Image
-        source={require('./images/landing.jpeg')}
+        source={require('./images/couprules.jpg')}
         style={{width:null, height:null, flex: 1, opacity: 0.75, justifyContent: 'center', alignItems: 'center'}}
         resizeMode = "stretch">
         <Button style={{ alignSelf:'center', marginTop:20, padding:10, height:45, width: 300, overflow:'hidden', borderRadius:12, backgroundColor: 'white'}} textStyle={{fontSize: 18}} onPress={() => this.startGame()}>Start the games</Button>
