@@ -143,7 +143,9 @@ io.on('connection', function(socket){
         console.log("interactions.BSables allowed for bad bs");
         interactions.BSables[data.attemptedAction.action].allowed(data.attemptedAction);
         break;
-      //TODO COUP, ASSASSINATE -> move on
+      case "COUP":
+      case "ASSASSINATE":
+        interactions.moveOn();
       default:
         console.log("DEFAULT!!!!! SHOULDN'T BE HERE!!!!!");
     }

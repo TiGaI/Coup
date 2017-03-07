@@ -95,6 +95,14 @@ module.exports = function(socket, game, blockableAction) {
         action.targetPlayer = null;
         performAction(action);
       }
+    },
+    "ASSASSINATE": {
+      allowed: function(action) {
+        game.takeAction(action);
+        updateClients();
+        askToLoseInfluence(action.targetPlayer);
+      },
+      disallowed: moveOn
     }
     //TODO EXCHANGE, ASSASSINATE, BLOCK ASSASSINATE,
   };
