@@ -45,7 +45,7 @@ module.exports = function(socket, game, blockableAction) {
     responses = [];
     expectedResponses = (actionObj.action === "FOREIGN AID") ? game.numPlayers() - 1 : 1;
     socket.emit("blockChance", actionObj);
-    socket.broadcast.emit("blockChance", actionObj); //emit to all (other) players, client is responsible for only reacting if appropriate
+    socket.broadcast.emit("blockChance", actionObj); //emit to all players, client is responsible for only reacting if appropriate
   };
 
   function askToLoseInfluence(losingPlayer, lossDetails) {
@@ -111,11 +111,17 @@ module.exports = function(socket, game, blockableAction) {
         action.targetPlayer = temp;
         askToLoseInfluence(action.targetPlayer, {reason: "Assassinated", attemptedAction: action});
       }
+    },
+    "EXCHANGE": {
+      allowed: function(action) {
+        var drawn = game.drawFromCourtDeck(2);
+        socket.emit("ambassadorCardsFor" + action.player, drawn);
+        socket.broadcast.emit("ambassadorCardsFor" + action.player, drawn);
+      },
+      disallowed: moveOn
     }
-    //TODO EXCHANGE,
   };
 
-  //TODO are all the objects in here gonna be identical? ditch?
   var blockables =
   {
     "STEAL": {

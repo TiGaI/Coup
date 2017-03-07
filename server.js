@@ -152,10 +152,20 @@ io.on('connection', function(socket){
       case "Couped":
       case "Assassinated":
         interactions.moveOn();
+        break;
       default:
         console.log("DEFAULT!!!!! SHOULDN'T BE HERE!!!!!");
     }
 
+  });
+
+  //data should send an influence array and a returned card array
+  // kept: [{role: Duke, alive: false}, {role: Assassin, alive: true}]  returned: ["Duke", "Captain"]
+  socket.on("AmbassadorDecision", (data) => {
+    console.log("AmbassadorDecision", data);
+    game.ambassadorDecision(socketUser, data.kept, data.returned);
+    interactions.moveOn();
+    interactions.updateClients();
   });
 });
 
