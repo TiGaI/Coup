@@ -149,7 +149,7 @@ var BoardView = React.createClass({
   componentDidMount(){
     this.state.socket.on('gameEnd', (userObject) => {
       this.setState({
-        message: "This game is Over! The Winner is " + userObject.username + "!",
+        message: "This game is over! The winner is " + userObject.username + "!",
         gameStatus: 'end'
       });
     });
@@ -182,15 +182,19 @@ var BoardView = React.createClass({
     this.state.socket.emit('requestState', null);
 
     this.state.socket.on('BSchance', (data) => {
+      var alive = this.state.playerObjects.some((x) => x.username===this.state.username && x.influence.some((y) => y.alive));
+      if (alive) {
       var msg = data.player + ': ' + data.action + (data.targetPlayer ? ' on ' + data.targetPlayer : '') + '. Call Bullshit?'
-      Alert.alert(msg, null,
+        Alert.alert(msg, null,
             [{text: 'no', onPress: this.bsresponse.bind(this, false, data)},
               {text: 'yes', onPress: this.bsresponse.bind(this, true, data)}]
-      );
+        );
+      }
     });
 
     this.state.socket.on('blockChance', (data) => {
-      if ((data.action === "FOREIGN AID" && data.player !== this.state.username) || data.targetPlayer === this.state.username) {
+      var alive = this.state.playerObjects.some((x) => x.username===this.state.username && x.influence.some((y) => y.alive));
+      if (alive && ((data.action === "FOREIGN AID" && data.player !== this.state.username) || data.targetPlayer === this.state.username)) {
         var msg = data.player + ': ' + data.action + (data.targetPlayer ? ' on you' : '') + '. Block?'
         var choiceArray = ((data.action === "STEAL") ?
         [{text: 'no', onPress: this.block.bind(this, false, data)},
@@ -292,7 +296,7 @@ var BoardView = React.createClass({
     this.state.socket.emit("LostInfluence", data);
   },
   restart(){
-    this.state.socket()
+    //this.state.socket() //!!!!!
   },
   render() {
     return this.renderTiles();
@@ -591,7 +595,7 @@ var BoardView = React.createClass({
             <View style={styles.notif}>
               <Text style={{textAlign: 'center', flex: 1, fontWeight: 'bold'}}>{this.state.message}</Text>
               {this.state.gameStatus === 'end' ? (
-                <Button style={{borderWidth: 1, borderColor: 'black', backgroundColor: "white", borderRadius: 70}} onPress={this.restart()} textStyle={{fontSize: 10}}>
+                <Button style={{borderWidth: 1, borderColor: 'black', backgroundColor: "white", borderRadius: 70}} onPress={this.restart} textStyle={{fontSize: 10}}>
                   Restart
                 </Button>
               ) : null}

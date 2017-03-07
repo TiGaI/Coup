@@ -222,6 +222,14 @@ Game.prototype.ambassadorDecision = function(playerName, keptInfluence, returned
 
 };
 
+Game.prototype.isAlive = function(playerName) {
+  return !this.getPlayer(playerName).isOut();
+};
+
+Game.prototype.numAlivePlayers = function() {
+  return this.players.filter(x => !x.isOut()).length;
+};
+
 //TODO and refactor other code to use hasRole
 
 
