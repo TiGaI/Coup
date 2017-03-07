@@ -305,6 +305,8 @@ var BoardView = React.createClass({
         style={{width:null, height:null, flex: 1, opacity: 0.75, justifyContent: 'center', alignItems: 'center'}}
         resizeMode = "stretch">
         <Button style={{ alignSelf:'center', marginTop:20, padding:10, height:45, width: 300, overflow:'hidden', borderRadius:12, backgroundColor: 'white'}} textStyle={{fontSize: 18}} onPress={() => this.startGame()}>Start the games</Button>
+        <Text>Players in game:</Text>
+        {this.state.playerObjects.map((x, i) => <Text key={i}>{x.username}</Text>)}
         </Image>
       )
     }

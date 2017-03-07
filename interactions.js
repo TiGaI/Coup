@@ -63,7 +63,7 @@ module.exports = function(socket, game, blockableAction) {
     },
     "STEAL": {
       allowed: function (action) {
-        blockableAction(action) //TODO don't wrap
+        blockableAction(action) //TODO don't wrap //TODO if allowed because the failed a challenge and died, shouldn't be allowed to block
       },
       disallowed: moveOn
     },
