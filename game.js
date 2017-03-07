@@ -102,6 +102,7 @@ Game.prototype.startGame = function() {
   if (this.players < MIN_PLAYERS) throw "Not enough players in game yet!";
 
   this.isStarted = true;
+  this.isOver = false;
   return this.currentPlayer();
 };
 

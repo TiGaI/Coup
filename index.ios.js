@@ -152,7 +152,12 @@ var BoardView = React.createClass({
         message: "This game is Over! The Winner is " + userObject.username + "!",
         gameStatus: 'end'
       });
-    })
+    });
+
+    this.state.socket.on('gameIsStarting', () => {
+      this.setState({gameStatus: "started"});
+    });
+
     this.state.socket.on('newUser', (data) => {
       console.log("new user has come in and his username is ", data)
       this.setState({
@@ -290,11 +295,20 @@ var BoardView = React.createClass({
     this.state.socket()
   },
   render() {
-    return <View style={styles.container}>
-             {this.renderTiles()}
-           </View>
+    return this.renderTiles();
   },
   renderTiles(){
+    if (this.state.gameStatus === 'not started') {
+      return (
+        <Image
+        source={require('./images/landing.jpeg')}
+        style={{width:null, height:null, flex: 1, opacity: 0.75, justifyContent: 'center', alignItems: 'center'}}
+        resizeMode = "stretch">
+        <Button style={{ alignSelf:'center', marginTop:20, padding:10, height:45, width: 300, overflow:'hidden', borderRadius:12, backgroundColor: 'white'}} textStyle={{fontSize: 18}} onPress={() => this.startGame()}>Start the games</Button>
+        </Image>
+      )
+    }
+
     var playerOn = this.state.playerObjects;
     if(!playerOn[0]){
       return null;
@@ -336,6 +350,7 @@ var BoardView = React.createClass({
 
     console.log("this is play deck card1111111: ", playerOn)
     return (
+      <View style={styles.container}>
       <View style={{backgroundColor: 'transparent'}}>
       <Image source={require('./download.jpg')} style={styles.piccontainer}>
       </Image>
@@ -579,6 +594,7 @@ var BoardView = React.createClass({
                 </Button>
               ) : null}
             </View>
+     </View>
      </View>
     )
   }
